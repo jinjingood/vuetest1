@@ -1,9 +1,13 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">todolist练习1</router-link> |
+    <router-link to="/Todolist_sec">todolist练习2</router-link> |
+    <router-link to="/Todolist_third">todolist练习3</router-link>|
+    <router-link to="/Companyweb">官网练习1</router-link>|
+    <router-link to="/Companyweb2">官网练习2</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
 <style lang="less">
