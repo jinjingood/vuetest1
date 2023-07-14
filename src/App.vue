@@ -4,8 +4,9 @@
     <router-link to="/about">todolist练习1</router-link> |
     <router-link to="/Todolist_sec">todolist练习2</router-link> |
     <router-link to="/Todolist_third">todolist练习3</router-link>|
-    <router-link to="/Companyweb">官网练习1</router-link>|
-    <router-link to="/Companyweb2">官网练习2</router-link>
+    <router-link to="/Companyweb1">官网练习1</router-link>|
+    <router-link to="/Companyweb2">官网练习2</router-link>｜
+    <router-link to="/Companyweb3">官网练习3</router-link>
   </nav>
   <router-view />
 </template>

@@ -1,174 +1,101 @@
 <template>
-  <div style="height: 5000px">
-    <div class="pics-box1">
-      <h1 style="font-weight: 600">
-        Industry-Leading Hinge for Ultimate Crease Control
-      </h1>
-      <img src="/images/1.1.png" alt="" class="pic1-1" />
-    </div>
-    <div class="pics-box2">
-      <h1 style="font-weight: 600">Functionality at Your Fingertips</h1>
-      <p style="color: #999; width: 40%; text-align: center; margin-left: 30%">
-        Whether it’s your camera at your fingertips or access to the forecast so
-        you’re dressed for the weather, customise your cover screen to supply
-        the information and functionality you need.
+  <div class="section p">
+    <div>
+      <h1>This is a big title</h1>
+      <p>
+        OPPO Find N2 FlipOPPO Find N2 Flip Discover the tech-savvy, style
+        statement phone that lets you see more in a snap. The larger cover
+        screen expands your view with innovative features, whilst the foldable
+        design reimagines photography possibilities, all in a gorgeous and
+        flawless design that you can pop in your pocket.
       </p>
-      <img class="box pic2" src="/images/2.png" />
-      <img class="box pic1" src="/images/1.png" />
-      <img class="pic-min" src="/images/main.png" />
-      <img class="box pic4" src="/images/4.png" />
-      <img class="box pic3" src="/images/3.png" />
+    </div>
+    <div class="section">
+      <div class="btn one">1</div>
+      <div class="btn two">2</div>
+      <div class="btn three">3</div>
     </div>
   </div>
+
+  <section class="section box1"></section>
+  <section class="section box2"></section>
 </template>
 
 <script>
-import { onMounted, ref, onUnmounted } from "vue";
+import { onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default {
   name: "Companyweb2",
   setup() {
     gsap.registerPlugin(ScrollTrigger);
-    const main = ref();
-    let ctx;
-    const t = gsap.timeline();
-    (gsap.to = () => {
-      ".pics-box1",
-        {
-          animation: gsap.fromTo(
-            ".pic1-1",
-            {
-              scale: 0.5,
-              opacity: 0,
-            },
-            { scale: 1.2, opacity: 1, duration: 1.5, y: 50 }
-          ),
-        };
-    }),
-      onMounted(() => {
-        gsap.set(".pics-box1", {
-          trigger: ".pics-box1",
-          start: "top top",
-          end: "+=1000",
-          scrub: true,
-          markers: true,
-        });
-        gsap.to(
-          ".pics-box2>.box",
-          {
-            scrollTrigger: {
-              trigger: ".pics-box2",
-              start: "top top",
-              end: "+=500",
-              scrub: true,
-              markers: true,
-              pin: true,
-            },
-            animation: t
-              .fromTo(
-                ".pic1",
-                {
-                  x: 0,
-                  opacity: 0,
-                },
-                {
-                  x: -100,
-                  y: 40,
-                  rotation: -25,
-                  duration: 1,
-                  opacity: 1,
-                },
-                1
-              )
-              .fromTo(
-                ".pic2",
-                {
-                  x: 0,
-                  opacity: 0,
-                },
-                {
-                  x: -200,
-                  y: 120,
-                  rotation: -50,
-                  duration: 1.5,
-                  opacity: 1,
-                },
-                "<"
-              )
-              .fromTo(
-                ".pic3",
-                {
-                  x: 0,
-                  opacity: 0,
-                },
-                {
-                  x: 200,
-                  y: 40,
-                  rotation: 25,
-                  duration: 1,
-                  opacity: 1,
-                },
-                1
-              )
-              .fromTo(
-                ".pic4",
-                {
-                  x: 0,
-                  opacity: 0,
-                },
-                {
-                  x: 300,
-                  y: 120,
-                  rotation: 50,
-                  duration: 1.5,
-                  opacity: 1,
-                },
-                "<"
-              ),
-            // });
-            // });
-          },
-          main.value
-        );
+    const t = gsap.timeline({
+      scrollTrigger: {//scrollTrigger不可以写到timeline里面？？
+        trigger: ".box1",
+        start: "25% 20% ", //第1个值是start，第2个值是：scroller-start
+        end: "35% 30%", //与start同理(不写end的话，end和scroller-end就默认都是视窗底部)
+        scrub: true,
+        pin: true,
+        markers: true,
+      },
+    });
+    onMounted(() => {
+      gsap.to(".section", {
+        animation: t
+          .fromTo(
+            ".box1",
+            { width: "100vw", opacity: 1 },
+            { width: 0, opacity: 0 }
+          )
+          .fromTo(".p", { y: -300 }),
       });
-    // onUnmounted(() => {
-    //   ctx.revert(); // <- Easy Cleanup!
-    // });
+    });
     return {};
   },
 };
 </script>
 
 <style lang="less" scoped>
-.pics-box1 {
-  margin-bottom: 40px;
-  height: 500px;
-  .pic1-1 {
-    height: 200px;
-    width: auto;
-    margin: 40px 0 0 0;
-  }
+.p {
+  padding: 0 80px;
+  height: calc(100vh - 83px);
+  // position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
 }
-
-.box {
+.section {
   position: absolute;
-  margin-top: 30px;
-  border-radius: 20px;
-  width: 120px;
-  height: 220px;
-  margin-left: -120px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  width: 100%;
 }
-.pic-min {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: -100px;
-  width: 200px;
-  height: 220px;
-  z-index: 9;
+.box1 {
+  background: yellowgreen;
+  height: 50vh;
+  margin-top: 22vh;
+  z-index: 2;
+}
+.box2 {
+  background: rgb(50, 179, 205);
+  margin-top: 22vh;
+  height: 50vh;
+}
+.btn {
+  display: inline-block;
+  width: 8vw;
+  height: 4vh;
+  border-radius: 8px;
+}
+.one {
+  background-color: aquamarine;
+}
+.two {
+  background-color: #fff;
+  margin: 0 12px;
+}
+.three {
+  background-color: antiquewhite;
 }
 </style>

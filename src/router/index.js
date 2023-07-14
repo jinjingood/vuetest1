@@ -27,14 +27,19 @@ const routes = [
     component: () => import("../views/Todolist_third.vue"),
   },
   {
-    path: "/Companyweb",
-    name: "Companyweb",
-    component: () => import("../views/Companyweb.vue"),
+    path: "/Companyweb1",
+    name: "Companyweb1",
+    component: () => import("../views/Companyweb1.vue"),
   },
   {
     path: "/Companyweb2",
     name: "Companyweb2",
     component: () => import("../views/Companyweb2.vue"),
+  },
+  {
+    path: "/Companyweb3",
+    name: "Companyweb3",//name与expexport default下的name无关，仅指左边的文件名
+    component: () => import("../views/Companyweb3.vue"),
   },
 ];
 
